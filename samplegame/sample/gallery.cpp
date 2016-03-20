@@ -95,11 +95,18 @@ void graph_scaling(Graph graph,int scaleFlg){
 	}
 
 	if (scaleFlg == 1){
+		/*
 		if (10 < x){ x-=3; }
 		if (width + x < SCREEN_WIDTH){ width+=6; }
 		if (9 < y){ y-=2; }
 		if (height + y < SCREEN_HEIGHT){ height+=4; }
+		*/
 
+		x = 0;
+		y = 0;
+		width = SCREEN_WIDTH;
+		height = SCREEN_HEIGHT;
+		
 		DrawExtendGraph(x, y, x+width, y+height, graph.handle, TRUE);
 	}else{
 		DrawExtendGraph(graph.x, graph.y, graph.x + graph.width, graph.y + graph.height, graph.handle, TRUE);
