@@ -11,22 +11,27 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="collision.cpp" />
-    <ClCompile Include="gallery.cpp" />
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="init.cpp" />
+    <ClCompile Include="initialize\collision.cpp" />
+    <ClCompile Include="gallery\gallery.cpp" />
+    <ClCompile Include="game\game.cpp" />
+    <ClCompile Include="initialize\init.cpp" />
+    <ClCompile Include="result\result.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="title.cpp" />
+    <ClCompile Include="title\title.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="collision.h" />
-    <ClInclude Include="gallery.h" />
-    <ClInclude Include="game.h" />
-    <ClInclude Include="init.h" />
-    <ClInclude Include="title.h" />
+    <ClInclude Include="initialize\collision.h" />
+    <ClInclude Include="gallery\gallery.h" />
+    <ClInclude Include="game\game.h" />
+    <ClInclude Include="initialize\init.h" />
+    <ClInclude Include="result\result.h" />
+    <ClInclude Include="title\title.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="sample.png" />
+    <Image Include="image\sample.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="image\filename.dat" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{35CECB89-1473-4039-A63D-2677E5F48A24}</ProjectGuid>

@@ -1,7 +1,8 @@
-#include"init.h"
-#include"title.h"
-#include"gallery.h"
-#include"game.h"
+#include"initialize\\init.h"
+#include"title\\title.h"
+#include"gallery\\gallery.h"
+#include"game\\game.h"
+#include"result\\result.h"
 
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int){
@@ -10,7 +11,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int){
 	Scene scene;
 
 	//èâä˙âª
-	init(Gallery, &scene);
+	init(Title, &scene);
 
 	//ÉÅÉCÉìÉãÅ[Év
 	while (!ProcessMessage() && !ScreenFlip() && !ClearDrawScreen()){
@@ -25,6 +26,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int){
 			break;
 		case Gallery:
 			gallery(&scene);
+			break;
+		case Result:
+			result(&scene);
 			break;
 		default:
 			break;
