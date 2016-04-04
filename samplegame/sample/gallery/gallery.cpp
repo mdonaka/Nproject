@@ -1,11 +1,11 @@
 #include"gallery.h"
 
 
-void gallery(Scene *scene){
+void gallery(Scene *scene, int handle[15]){
 	static Graph graph[15];
 
 	//‰Šú‰»
-	init(graph);
+	init(graph,handle);
 
 	//•`‚­
 	draw(graph);
@@ -115,7 +115,7 @@ void graph_scaling(Graph graph,int scaleFlg){
 	}
 }
 
-void init(Graph graph[15]){
+void init(Graph graph[15],int handle[15]){
 	static int flg = 0;
 
 	//DxLibŠÖŒW‰Šú‰»
@@ -123,13 +123,13 @@ void init(Graph graph[15]){
 
 	//‰æ‘œŠÖŒW‰Šú‰»(1‰ñ‚Ì‚İ)
 	if (flg != 1){
-		init_graph(graph);
+		init_graph(graph,handle);
 		flg = 1;
 	}
 
 }
 
-void init_graph(Graph graph[15]){
+void init_graph(Graph graph[15],int handle[15]){
 	int i;
 	int spaceX,spaceY;
 
@@ -142,7 +142,7 @@ void init_graph(Graph graph[15]){
 		graph[i].height = (SCREEN_HEIGHT-50-4*spaceY)/3;
 		graph[i].x = spaceX + (graph[i].width+ spaceX)*(i % 5);
 		graph[i].y = spaceY + (graph[i].height + spaceY)*(i % 3);
-		graph[i].handle = LoadGraph("image\\sample.png");
+		graph[i].handle = handle[i];
 	}
 }
 

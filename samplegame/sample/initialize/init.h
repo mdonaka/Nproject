@@ -15,6 +15,8 @@ typedef enum _Scene{
 }Scene;
 
 //‰Šú‰»
-void init(Scene s, Scene *scene);
+void init(Scene s, Scene *scene,int handle[15]);
 //DxLib‚Ì‰Šú‰»
 void init_dx();
+//ƒnƒ“ƒhƒ‹‰Šú‰»
+void init_handle(int handle[15]);

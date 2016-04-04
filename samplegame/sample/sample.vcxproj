@@ -28,6 +28,7 @@
     <ClInclude Include="title\title.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="image\back.png" />
     <Image Include="image\sample.png" />
   </ItemGroup>
   <ItemGroup>

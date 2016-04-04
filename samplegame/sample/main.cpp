@@ -10,8 +10,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int){
 	//シーン
 	Scene scene;
 
+	//画像ハンドル
+	int handle[15];
+
 	//初期化
-	init(Title, &scene);
+	init(Game, &scene, handle);
 
 	//メインループ
 	while (!ProcessMessage() && !ScreenFlip() && !ClearDrawScreen()){
@@ -22,10 +25,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int){
 			title(&scene);
 			break;
 		case Game:
-			game(&scene);
+			game(&scene, handle);
 			break;
 		case Gallery:
-			gallery(&scene);
+			gallery(&scene, handle);
 			break;
 		case Result:
 			result(&scene);
