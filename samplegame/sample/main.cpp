@@ -11,7 +11,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int){
 	Scene scene;
 
 	//‰æ‘œƒnƒ“ƒhƒ‹
-	int handle[15];
+	Picture handle[15];
 
 	//‰Šú‰»
 	init(Game, &scene, handle);

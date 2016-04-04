@@ -28,7 +28,7 @@ typedef struct __Graph{
 }Graphs;
 
 //game画面のメイン関数
-void game(Scene *scene,int handle[15]);
+void game(Scene *scene, Picture handle[15]);
 //gameのメイン部分
 void game_main(Graphs graph[30],Player player[4]);
 //gameの描画部分
@@ -40,10 +40,10 @@ void change_status(Graphs graph[30], int number, Player player[4], int pointX, i
 //gameの状態表示部分
 void game_sub();
 //初期化
-void init(int *flg, Graphs graph[15], int handle[15], Player player[4]);
+void init(int *flg, Graphs graph[15], Picture handle[15], Player player[4]);
 //画像初期化
-void init_graph(Graphs graph[15], int handle[15]);
+void init_graph(Graphs graph[15], Picture handle[15]);
 //カードをランダム配置
-void graph_randam(Graphs graph[30], int handle[15]);
+void graph_randam(Graphs graph[30], Picture handle[15]);
 //プレイヤー初期化
 void init_player(Player player[4]);

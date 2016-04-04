@@ -1,7 +1,7 @@
 #include"game.h"
 
 
-void game(Scene *scene,int handle[15]){
+void game(Scene *scene, Picture handle[15]){
 	static Graphs graph[30];
 	static int init_flg=0;
 	static Player player[4];
@@ -35,18 +35,18 @@ void game_main(Graphs graph[30],Player player[4]){
 
 void draw_graph(Graphs graph[30]){
 	static int i;
-	static int handleBack = LoadGraph("image\\back.png");
+	static int handleBack = LoadGraph("image\\Yinball.png");
 	static int handleG;
 
 	for (i = 0; i < 30; i++){
 		//カードを取られていない
 		if (graph[i].get == 0){
 			//カードを開いている
-			if (graph[i].hold == 0){
+			if (graph[i].hold == 0&&0){
 				handleG = handleBack;
 			}
 			//カードに触れられていない
-			else if (graph[i].hold == 1){
+			else if (graph[i].hold == 1||1){
 				handleG = graph[i].handle;
 			}
 			DrawExtendGraph(graph[i].x, graph[i].y, graph[i].x + graph[i].width, graph[i].y + graph[i].height, handleG, TRUE);
@@ -122,7 +122,7 @@ void game_sub(){
 	DrawLine(500, 0, 500, 480, GetColor(255,0,0));
 }
 
-void init(int *flg,Graphs graph[30],int handle[15],Player player[4]){
+void init(int *flg, Graphs graph[30], Picture handle[15], Player player[4]){
 	
 	if (!*flg){
 		*flg = 1;
@@ -136,7 +136,7 @@ void init(int *flg,Graphs graph[30],int handle[15],Player player[4]){
 	
 }
 
-void init_graph(Graphs graph[30],int handle[15]){
+void init_graph(Graphs graph[30], Picture handle[15]){
 
 	int i;
 
@@ -149,13 +149,12 @@ void init_graph(Graphs graph[30],int handle[15]){
 		graph[i].get = 0;
 		graph[i].hold = 0;
 		graph[i].number = i;
-		graph[i].point = 1;
 	}
 	graph_randam(graph, handle);
 	graph[i].get = 1;
 }
 
-void graph_randam(Graphs graph[30],int handle[15]){
+void graph_randam(Graphs graph[30], Picture handle[15]){
 	int tmp[30] = { 0 };
 	int i;
 	int rnd;
@@ -164,8 +163,9 @@ void graph_randam(Graphs graph[30],int handle[15]){
 	for (i = 0; i < 30; i++){
 		rnd = rand() % 30;
 		if (tmp[rnd] == 0){
-			graph[i].handle = handle[rnd % 15];
-			tmp[i] = 1;
+			graph[i].handle = handle[rnd % 15].handle;
+			graph[i].point = handle[rnd % 15].point;
+			tmp[rnd]++;
 		}
 		else{
 			i--;

@@ -1,7 +1,7 @@
 #include"gallery.h"
 
 
-void gallery(Scene *scene, int handle[15]){
+void gallery(Scene *scene, Picture handle[15]){
 	static Graph graph[15];
 
 	//èâä˙âª
@@ -115,7 +115,7 @@ void graph_scaling(Graph graph,int scaleFlg){
 	}
 }
 
-void init(Graph graph[15],int handle[15]){
+void init(Graph graph[15], Picture handle[15]){
 	static int flg = 0;
 
 	//DxLibä÷åWèâä˙âª
@@ -129,7 +129,7 @@ void init(Graph graph[15],int handle[15]){
 
 }
 
-void init_graph(Graph graph[15],int handle[15]){
+void init_graph(Graph graph[15], Picture handle[15]){
 	int i;
 	int spaceX,spaceY;
 
@@ -142,7 +142,7 @@ void init_graph(Graph graph[15],int handle[15]){
 		graph[i].height = (SCREEN_HEIGHT-50-4*spaceY)/3;
 		graph[i].x = spaceX + (graph[i].width+ spaceX)*(i % 5);
 		graph[i].y = spaceY + (graph[i].height + spaceY)*(i % 3);
-		graph[i].handle = handle[i];
+		graph[i].handle = handle[i].handle;
 	}
 }
 

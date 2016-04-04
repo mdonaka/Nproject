@@ -14,9 +14,15 @@ typedef enum _Scene{
 	Result
 }Scene;
 
+//‰æ‘œ(Œ³)‚Ì\‘¢‘Ì
+typedef struct _Picture{
+	int handle;
+	int point;
+}Picture;
+
 //‰Šú‰»
-void init(Scene s, Scene *scene,int handle[15]);
+void init(Scene s, Scene *scene,Picture handle[15]);
 //DxLib‚Ì‰Šú‰»
 void init_dx();
 //ƒnƒ“ƒhƒ‹‰Šú‰»
-void init_handle(int handle[15]);
+void init_handle(Picture handle[15]);
