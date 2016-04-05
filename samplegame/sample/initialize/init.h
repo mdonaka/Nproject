@@ -1,5 +1,6 @@
 #pragma once
 #include<stdio.h>
+#include<string.h>
 #include"DxLib.h"
 
 #define SCREEN_WIDTH 640
@@ -18,6 +19,7 @@ typedef enum _Scene{
 typedef struct _Picture{
 	int handle;
 	int point;
+	char name[20];
 }Picture;
 
 //‰Šú‰»
