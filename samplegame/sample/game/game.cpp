@@ -3,9 +3,8 @@
 //グローバル変数死すべし
 //ｱｲｴｴｴｴｴｴｴｴ
 int init_flg=0;
-void game(Scene *scene, Picture handle[15]){
+void game(Scene *scene, Picture handle[15],Player player[4]){
 	static Graphs graph[30];
-	static Player player[4];
 
 	//初期化
 	init(&init_flg,graph,handle,player);
@@ -35,11 +34,11 @@ void draw_graph(Graphs graph[30]){
 		//カードを取られていない
 		if (graph[i].get == 0){
 			//カードを開いている
-			if (graph[i].hold == 0){
+			if (graph[i].hold == 0&&0){
 				handleG = handleBack;
 			}
 			//カードに触れられていない
-			else if (graph[i].hold == 1){
+			else if (graph[i].hold == 1||1){
 				handleG = graph[i].handle;
 			}
 			DrawExtendGraph(graph[i].x, graph[i].y, graph[i].x + graph[i].width, graph[i].y + graph[i].height, handleG, TRUE);
@@ -83,7 +82,9 @@ void game_end(Scene *scene,Graphs graph[30]){
 
 void change_status(Graphs graph[30], int number, Player player[4], int pointX, int pointY){
 	static int i, g;
+	static int mag = 1;
 	static int getNumber[2] = {0};
+
 	if (collision_rect(graph[number].x, graph[number].y, graph[number].width, graph[number].height, pointX, pointY)){
 		for (i = 0; i < 4; i++){
 			switch (player[i].status){
@@ -103,10 +104,12 @@ void change_status(Graphs graph[30], int number, Player player[4], int pointX, i
 
 					if (graph[getNumber[0]].handle == graph[number].handle){
 						player[i].status = Get;
-						player[i].point += graph[number].point;
+						player[i].point += graph[number].point*mag;
+						mag++;
 					}
 					else{
 						player[i].status = End;
+						mag = 0;
 					}
 				}
 				break;
@@ -216,6 +219,7 @@ void init_player(Player player[4]){
 	static int i;
 	for (i = 0; i < 4; i++){
 		player[i].point = 0;
+		player[i].num = i;
 		player[i].status = Wait;
 	}
 	player[0].status = Zero;

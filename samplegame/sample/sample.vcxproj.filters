@@ -67,5 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="image\filename.dat" />
+    <None Include="result\data.dat" />
   </ItemGroup>
 </Project>

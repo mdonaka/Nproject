@@ -33,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="image\filename.dat" />
+    <None Include="result\data.dat" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{35CECB89-1473-4039-A63D-2677E5F48A24}</ProjectGuid>

@@ -10,6 +10,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int){
 	//シーン
 	Scene scene;
 
+	//プレイヤー
+	Player player[4];
+
 	//画像ハンドル
 	Picture handle[15];
 
@@ -25,13 +28,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int){
 			title(&scene);
 			break;
 		case Game:
-			game(&scene, handle);
+			game(&scene, handle,player);
 			break;
 		case Gallery:
 			gallery(&scene, handle);
 			break;
 		case Result:
-			result(&scene);
+			result(&scene,player);
 			break;
 		default:
 			break;

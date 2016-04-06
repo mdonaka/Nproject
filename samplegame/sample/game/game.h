@@ -3,18 +3,6 @@
 #include"..\\initialize\\init.h"
 #include"..\\initialize\collision.h"
 
-typedef enum _StatusName{
-	Wait,
-	Zero,
-	One,
-	Get,
-	End
-}StatusName;
-
-typedef struct _Player{
-	StatusName status;
-	int point;
-}Player;
 
 typedef struct __Graph{
 	int handle;
@@ -30,7 +18,7 @@ typedef struct __Graph{
 }Graphs;
 
 //game‰æ–Ê‚ÌƒƒCƒ“ŠÖ”
-void game(Scene *scene, Picture handle[15]);
+void game(Scene *scene, Picture handle[15],Player player[4]);
 //game‚ÌƒƒCƒ“•”•ª
 void game_main(Scene *scene,Graphs graph[30],Player player[4]);
 //game‚Ì•`‰æ•”•ª
