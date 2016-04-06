@@ -108,9 +108,9 @@ void graph_scaling(Graph graph,int scaleFlg){
 		width = SCREEN_WIDTH;
 		height = SCREEN_HEIGHT;
 		
-		DrawExtendGraph(x, y, x+width, y+height, graph.handle, TRUE);
+		DrawExtendGraph(x, y, x+width, y+height, graph.handle, FALSE);
 	}else{
-		DrawExtendGraph(graph.x, graph.y, graph.x + graph.width, graph.y + graph.height, graph.handle, TRUE);
+		DrawExtendGraph(graph.x, graph.y, graph.x + graph.width, graph.y + graph.height, graph.handle, FALSE);
 		flg = 0;
 	}
 }

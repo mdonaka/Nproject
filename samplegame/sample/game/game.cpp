@@ -41,7 +41,7 @@ void draw_graph(Graphs graph[30]){
 			else if (graph[i].hold == 1){
 				handleG = graph[i].handle;
 			}
-			DrawExtendGraph(graph[i].x, graph[i].y, graph[i].x + graph[i].width, graph[i].y + graph[i].height, handleG, TRUE);
+			DrawExtendGraph(graph[i].x, graph[i].y, graph[i].x + graph[i].width, graph[i].y + graph[i].height, handleG, FALSE);
 		}
 		//ƒJ[ƒh‚ğæ‚ç‚ê‚Ä‚¢‚é
 		else{}
