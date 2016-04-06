@@ -2,11 +2,10 @@
 
 void result(Scene *scene,Player player[4]){
 	static int flg = 0;
-	static int max = 0;
 	static int savei[6];
 
 	//処理部
-	process(player, &max,&flg,savei);
+	process(player,&flg,savei);
 
 	//描画部
 	draw(player,savei);
@@ -18,29 +17,28 @@ void result(Scene *scene,Player player[4]){
 	
 }
 
-void process(Player player[4], int *max,int *flg,int savei[6]){
+void process(Player player[4],int *flg,int savei[6]){
 
 	SetMainWindowText("結果画面");	
 	
 	if (*flg == 0){
-		maxin(player, max);
-		save(*max,savei);
+		maxin(player);
+		save(player,savei);
 		*flg = 1;
 	}
 
 }
 
-void maxin(Player player[4],int *max){
+void maxin(Player player[4]){
 	sortPlayer(player, 4);
-	*max = player[3].point;
 }
 
-void save(int max,int savei[6]){
+void save(Player player[4],int savei[6]){
 	//ファイルポインタ
 	FILE *fp;
 
 	//0,1,2,3,4:書き込む 5:ランク外
-	char savec[5][10];
+	char savec[9][10];
 	
 	fopen_s(&fp,"result\\data.dat", "r");
 	
@@ -52,16 +50,18 @@ void save(int max,int savei[6]){
 		fgets(savec[i], 4, fp);
 		savei[i] = atoi(savec[i]);
 	}
-	savei[5] = max;
+	for (int i = 0; i < 4; i++){
+		savei[5 + i] = player[i].point;
+	}
 	fclose(fp);
 
 	//ソート
-	sort(savei, 6);
+	sort(savei, 9);
 
 	//書き込み
 	fopen_s(&fp, "result\\data.dat", "w");
 	for (int i = 0; i < 5; i++){
-		fprintf_s(fp,"%d\n",savei[5-i]);
+		fprintf_s(fp,"%d\n",savei[8-i]);
 	}
 
 	fclose(fp);
@@ -74,11 +74,11 @@ void draw(Player player[4],int savei[6]){
 	DrawFormatString(300, 30, 0xffffff, "最高得点");
 
 	for (int i = 0; i < 4; i++){
-		DrawFormatString(30, 70+30*i, 0xffffff, "%d.プレイヤー%d:%d点", i,player[i].num+1, player[i].point);
+		DrawFormatString(30, 70+30*i, 0xffffff, "%d.プレイヤー%d:%d点", i+1,player[3-i].num+1, player[3-i].point);
 	}
 
 	for (int i = 0; i < 5; i++){
-		DrawFormatString(310, 70+30*i, 0xffffff, "%d. %d点", i+1,savei[5-i]);
+		DrawFormatString(310, 70+30*i, 0xffffff, "%d. %d点", i+1,savei[8-i]);
 	}
 }
 

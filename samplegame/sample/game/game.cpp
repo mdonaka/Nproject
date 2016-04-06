@@ -16,7 +16,7 @@ void game(Scene *scene, Picture handle[15],Player player[4]){
 	game_sub(player);
 
 	//デバッグ
-	game_debug(scene, graph, player);
+	//game_debug(scene, graph, player);
 }
 
 void game_main(Scene *scene,Graphs graph[30],Player player[4]){
@@ -109,7 +109,7 @@ void change_status(Graphs graph[30], int number, Player player[4], int pointX, i
 					}
 					else{
 						player[i].status = End;
-						mag = 0;
+						mag = 1;
 					}
 				}
 				break;

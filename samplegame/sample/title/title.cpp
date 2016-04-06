@@ -11,7 +11,7 @@ void title(Scene *scene){
 		*scene = Gallery;
 	}
 	else if (CheckHitKey(KEY_INPUT_A)){
-		*scene = Result;
+		//*scene = Result;
 	}
 }
 

@@ -4,11 +4,11 @@
 //リザルト画面メイン関数
 void result(Scene *scene,Player player[4]);
 //処理部分
-void process(Player player[4], int *max,int *flg,int savei[6]);
+void process(Player player[4],int *flg,int savei[6]);
 //最大値抽出
-void maxin(Player player[4], int *max);
-//最大値記憶、プレイヤーソート
-void save(int max,int savei[6]);
+void maxin(Player player[4]);
+//プレイヤーソート
+void save(Player player[4],int savei[6]);
 //描画部
 void draw(Player player[4],int save[6]);
 //バブルソート(数値)
