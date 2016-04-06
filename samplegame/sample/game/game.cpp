@@ -34,11 +34,11 @@ void draw_graph(Graphs graph[30]){
 		//カードを取られていない
 		if (graph[i].get == 0){
 			//カードを開いている
-			if (graph[i].hold == 0&&0){
+			if (graph[i].hold == 0){
 				handleG = handleBack;
 			}
 			//カードに触れられていない
-			else if (graph[i].hold == 1||1){
+			else if (graph[i].hold == 1){
 				handleG = graph[i].handle;
 			}
 			DrawExtendGraph(graph[i].x, graph[i].y, graph[i].x + graph[i].width, graph[i].y + graph[i].height, handleG, TRUE);

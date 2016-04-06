@@ -3,12 +3,13 @@
 void result(Scene *scene,Player player[4]){
 	static int flg = 0;
 	static int max = 0;
+	static int savei[6];
 
 	//処理部
-	process(player, &max,&flg);
+	process(player, &max,&flg,savei);
 
 	//描画部
-	draw(player);
+	draw(player,savei);
 
 	if (CheckHitKey(KEY_INPUT_X)){
 		flg = 0;
@@ -17,10 +18,13 @@ void result(Scene *scene,Player player[4]){
 	
 }
 
-void process(Player player[4], int *max,int *flg){
+void process(Player player[4], int *max,int *flg,int savei[6]){
+
+	SetMainWindowText("結果画面");	
+	
 	if (*flg == 0){
 		maxin(player, max);
-		save(*max);
+		save(*max,savei);
 		*flg = 1;
 	}
 
@@ -31,13 +35,12 @@ void maxin(Player player[4],int *max){
 	*max = player[3].point;
 }
 
-void save(int max){
+void save(int max,int savei[6]){
 	//ファイルポインタ
 	FILE *fp;
 
 	//0,1,2,3,4:書き込む 5:ランク外
-	char savec[5][4];
-	int savei[6];
+	char savec[5][10];
 	
 	fopen_s(&fp,"result\\data.dat", "r");
 	
@@ -64,12 +67,18 @@ void save(int max){
 	fclose(fp);
 }
 
-void draw(Player player[4]){
-	SetMainWindowText("結果画面");
+void draw(Player player[4],int savei[6]){
+
 	DrawFormatString(20, 450, 0xffffff, "xでタイトル画面へ");
+	DrawFormatString(20, 30, 0xffffff, "今回の結果");
+	DrawFormatString(300, 30, 0xffffff, "最高得点");
 
 	for (int i = 0; i < 4; i++){
-		DrawFormatString(40, 200 + 20 * (3 - i), 0xff0000, "%d %d", player[i].num, player[i].point);
+		DrawFormatString(30, 70+30*i, 0xffffff, "%d.プレイヤー%d:%d点", i,player[i].num+1, player[i].point);
+	}
+
+	for (int i = 0; i < 5; i++){
+		DrawFormatString(310, 70+30*i, 0xffffff, "%d. %d点", i+1,savei[5-i]);
 	}
 }
 
