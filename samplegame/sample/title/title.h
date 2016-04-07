@@ -2,4 +2,4 @@
 #include"..\\initialize\\init.h"
 
 void title(Scene *scene);
-void text();
+void text(int *flag);

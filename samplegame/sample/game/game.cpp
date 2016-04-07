@@ -3,6 +3,9 @@
 //グローバル変数死すべし
 //ｱｲｴｴｴｴｴｴｴｴ
 int init_flg=0;
+int handleBack;
+int mag = 1;
+
 void game(Scene *scene, Picture handle[15],Player player[4]){
 	static Graphs graph[30];
 
@@ -27,7 +30,6 @@ void game_main(Scene *scene,Graphs graph[30],Player player[4]){
 
 void draw_graph(Graphs graph[30]){
 	static int i;
-	static int handleBack = LoadGraph("image\\Yinball.png");
 	static int handleG;
 
 	for (i = 0; i < 30; i++){
@@ -41,10 +43,14 @@ void draw_graph(Graphs graph[30]){
 			else if (graph[i].hold == 1){
 				handleG = graph[i].handle;
 			}
+			else{
+				DrawFormatString(20, 20, 0xff0000, "error!!!");
+			}
 			DrawExtendGraph(graph[i].x, graph[i].y, graph[i].x + graph[i].width, graph[i].y + graph[i].height, handleG, FALSE);
 		}
 		//カードを取られている
-		else{}
+		else{
+		}
 	}
 }
 
@@ -82,7 +88,6 @@ void game_end(Scene *scene,Graphs graph[30]){
 
 void change_status(Graphs graph[30], int number, Player player[4], int pointX, int pointY){
 	static int i, g;
-	static int mag = 1;
 	static int getNumber[2] = {0};
 
 	if (collision_rect(graph[number].x, graph[number].y, graph[number].width, graph[number].height, pointX, pointY)){
@@ -174,6 +179,10 @@ void init(int *flg, Graphs graph[30], Picture handle[15], Player player[4]){
 
 		//プレイヤー初期化
 		init_player(player);
+
+		//グローバル変数死ね
+		handleBack = LoadGraph("image\\Yinball.png");
+		mag = 1;
 	}
 	
 }
@@ -238,9 +247,11 @@ void game_debug(Scene *scene,Graphs graph[30],Player player[4]){
 	for (int i = 0; i < 30; i++){
 		if (!graph[i].get){
 			DrawFormatString(500, 15 * i, GetColor(0, 255, 255), "%d:%s", i, graph[i].name);
+			DrawFormatString(500, 15 * i, GetColor(0, 255, 255), "%d:%d", i, graph[i].get);
 		}
 	}
 	*/
+	
 	//プレイヤーの状態表示
 	/*
 	for (int i = 0; i < 4; i++){
