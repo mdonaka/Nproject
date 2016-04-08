@@ -5,9 +5,12 @@
 int init_flg=0;
 int handleBack;
 int mag = 1;
+int player_num;
 
-void game(Scene *scene, Picture handle[15],Player player[4]){
+void game(Scene *scene, Picture handle[15],Player player[4],int num){
 	static Graphs graph[30];
+
+	player_num=num;
 
 	//初期化
 	init(&init_flg,graph,handle,player);
@@ -91,7 +94,7 @@ void change_status(Graphs graph[30], int number, Player player[4], int pointX, i
 	static int getNumber[2] = {0};
 
 	if (collision_rect(graph[number].x, graph[number].y, graph[number].width, graph[number].height, pointX, pointY)){
-		for (i = 0; i < 4; i++){
+		for (i = 0; i < player_num; i++){
 			switch (player[i].status){
 			case Wait:
 				break;
@@ -125,10 +128,10 @@ void change_status(Graphs graph[30], int number, Player player[4], int pointX, i
 				break;
 			case End:
 				player[i].status = Wait;
-				player[(i == 3) ? 0 : i + 1].status = Zero;
+				player[(i == player_num-1) ? 0 : i + 1].status = Zero;
 				graph[getNumber[0]].hold = 0;
 				graph[getNumber[1]].hold = 0;
-				i = 4;
+				i = player_num;
 				break;
 			default:
 				break;
@@ -151,7 +154,7 @@ void game_sub(Player player[4]){
 	static int y = 100;
 	unsigned int color;
 	DrawLine(500, 0, 500, 480, GetColor(255,0,0));
-	for (i = 0; i < 4; i++){
+	for (i = 0; i < player_num; i++){
 		if (player[i].status == Wait){
 			color = 0xffffff;
 		}
@@ -226,7 +229,7 @@ void graph_randam(Graphs graph[30], Picture handle[15]){
 
 void init_player(Player player[4]){
 	static int i;
-	for (i = 0; i < 4; i++){
+	for (i = 0; i < player_num; i++){
 		player[i].point = 0;
 		player[i].num = i;
 		player[i].status = Wait;
@@ -254,7 +257,7 @@ void game_debug(Scene *scene,Graphs graph[30],Player player[4]){
 	
 	//プレイヤーの状態表示
 	/*
-	for (int i = 0; i < 4; i++){
+	for (int i = 0; i < player_num; i++){
 	DrawFormatString(510,400+20*i,GetColor(255,0,0),"%d %d",i,player[i].status);
 	}
 	*/

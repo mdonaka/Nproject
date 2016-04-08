@@ -2,7 +2,7 @@
 #include"..\\initialize\\init.h"
 
 //リザルト画面メイン関数
-void result(Scene *scene,Player player[4]);
+void result(Scene *scene,Player player[4],int num);
 //処理部分
 void process(Player player[4],int *flg,int savei[6]);
 //最大値抽出

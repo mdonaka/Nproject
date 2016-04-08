@@ -6,6 +6,8 @@
 
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int){
+	
+	int player_num;
 
 	//ÉVÅ[Éì
 	Scene scene;
@@ -25,16 +27,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int){
 
 		switch (scene){
 		case Title:
-			title(&scene);
+			title(&scene,&player_num);
 			break;
 		case Game:
-			game(&scene, handle,player);
+			game(&scene, handle, player, player_num);
 			break;
 		case Gallery:
 			gallery(&scene, handle);
 			break;
 		case Result:
-			result(&scene,player);
+			result(&scene, player, player_num);
 			break;
 		default:
 			break;

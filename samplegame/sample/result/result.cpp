@@ -1,8 +1,12 @@
 #include"result.h"
 
-void result(Scene *scene,Player player[4]){
+int player_nums;
+
+void result(Scene *scene,Player player[4],int num){
 	static int flg = 0;
 	static int savei[6];
+
+	player_nums = num;
 
 	//処理部
 	process(player,&flg,savei);
@@ -30,7 +34,7 @@ void process(Player player[4],int *flg,int savei[6]){
 }
 
 void maxin(Player player[4]){
-	sortPlayer(player, 4);
+	sortPlayer(player, player_nums);
 }
 
 void save(Player player[4],int savei[6]){
@@ -50,18 +54,18 @@ void save(Player player[4],int savei[6]){
 		fgets(savec[i], 4, fp);
 		savei[i] = atoi(savec[i]);
 	}
-	for (int i = 0; i < 4; i++){
+	for (int i = 0; i < player_nums; i++){
 		savei[5 + i] = player[i].point;
 	}
 	fclose(fp);
 
 	//ソート
-	sort(savei, 9);
+	sort(savei, 5+player_nums);
 
 	//書き込み
 	fopen_s(&fp, "result\\data.dat", "w");
 	for (int i = 0; i < 5; i++){
-		fprintf_s(fp,"%d\n",savei[8-i]);
+		fprintf_s(fp,"%d\n",savei[5+player_nums-1-i]);
 	}
 
 	fclose(fp);
@@ -73,12 +77,12 @@ void draw(Player player[4],int savei[6]){
 	DrawFormatString(20, 30, 0xffffff, "今回の結果");
 	DrawFormatString(300, 30, 0xffffff, "最高得点");
 
-	for (int i = 0; i < 4; i++){
-		DrawFormatString(30, 70+30*i, 0xffffff, "%d.プレイヤー%d:%d点", i+1,player[3-i].num+1, player[3-i].point);
+	for (int i = 0; i < player_nums; i++){
+		DrawFormatString(30, 70+30*i, 0xffffff, "%d位.プレイヤー%d:%d点", i+1,player[player_nums-i-1].num+1, player[player_nums-i-1].point);
 	}
 
 	for (int i = 0; i < 5; i++){
-		DrawFormatString(310, 70+30*i, 0xffffff, "%d. %d点", i+1,savei[8-i]);
+		DrawFormatString(310, 70+30*i, 0xffffff, "%d. %d点", i+1,savei[5+player_nums-i-1]);
 	}
 }
 

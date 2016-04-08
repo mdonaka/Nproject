@@ -18,7 +18,7 @@ typedef struct __Graph{
 }Graphs;
 
 //game‰æ–Ê‚ÌƒƒCƒ“ŠÖ”
-void game(Scene *scene, Picture handle[15],Player player[4]);
+void game(Scene *scene, Picture handle[15],Player player[4],int num);
 //game‚ÌƒƒCƒ“•”•ª
 void game_main(Scene *scene,Graphs graph[30],Player player[4]);
 //game‚Ì•`‰æ•”•ª
